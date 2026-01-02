@@ -77,7 +77,9 @@ export default function HomePage() {
               </div>
 
             </div>
-            <div className="rightp"></div>
+              <div className="rightp">
+                <div className="rightp-head">Submitted by</div>
+              </div>
           </div>
         </>
         )}
