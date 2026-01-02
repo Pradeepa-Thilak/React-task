@@ -66,6 +66,26 @@ export default function HomePage() {
             </div>
               <div className="rightp">
                 <div className="rightp-head">Submitted by</div>
+                <div className="searchinput">
+                  <input type="text" placeholder="Enter Customer ID / SO ID" className="input" />
+                  <i className="fa-solid fa-magnifying-glass icon"></i>
+                </div>
+                <div className="lists">
+                  <div className="name">Priya Patel (DS)</div>
+                  <div className="name-detail">
+                    <div>
+                      <span>3 Buylists</span>
+                    </div>
+                    <div className="rating">
+                      <span>2</span>
+                      <span className="circle yellow"></span>
+                      <span>1</span>
+                      <span className="circle green"></span>
+                      <span>0</span>
+                      <span className="circle red"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
           </div>
         </>
