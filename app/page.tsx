@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Modal from "@/app/components/Modal";
+import filterIcon from "@/app/assets/filter.jpg";
+import Image from "next/image";
 
 type ModalType="file" | "search" | null;
 
@@ -29,16 +31,41 @@ export default function HomePage() {
         {/* child1 */}
         {modalType==="file" &&(
         <>
-          <h2>File Modal</h2>
-          <p>This is the file modal content.</p>
+         
         </>
 
         )}
         {/* child2 */}
         {modalType==="search" &&(
         <>
-          <h2>Search Modal</h2>
-          <p>This is the search modal content.</p>
+           <div className="top">
+
+            <div className="ltop">
+              <Image src={filterIcon} alt="filter" className="filterb"></Image>
+
+              <p>Filter Buylist by</p>
+            </div>
+
+            <div className="rtop">
+              <button className="reset">
+                RESET</button>
+
+              <button className="close" onClick={()=>setOpen(false)}>X</button>
+            </div>
+
+          </div>
+          <div className="bottom">
+            <div className="leftp">
+              <div className="lhead">
+                
+              </div>
+              <div className="lbody">
+
+              </div>
+
+            </div>
+            <div className="rightp"></div>
+          </div>
         </>
         )}
 
