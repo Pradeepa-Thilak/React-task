@@ -98,6 +98,99 @@
     overflow-y: auto;
 }
 
+.lhead{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.lprightbox{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.clearall{
+      cursor:pointer;
+    font-size: 12px;
+    color: #FF6824;
+    border: none;
+    background: none;
+    padding: 0; 
+    margin: 0;
+}
+
+.status{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+    font-size: 12px;
+    color: #ccc;
+}
+.lbody{
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+.filter-section{
+    display: flex;
+    padding-left: 10px;
+    gap: 6px;
+    font-size: 12px;
+    color: #ccc;
+    cursor: pointer;
+    
+}
+
+.selectall{
+      cursor:pointer;
+    font-size: 12px;
+    color: #FF6824;
+    border: none;
+    background: none;
+    padding: 0; 
+    margin: 0;
+}
+
+.dropdown {
+  font-size: 14px;
+}
+
+.dropdown-title {
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-list {
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  padding-left: 20px;
+  color: #ccc;
+}
+
+.dropdown-list label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+ 
+}
+
+.dropdown-list input[type="checkbox"] {
+  width: 10px;
+  height: 10px;
+  accent-color: #ccc;
+  cursor: pointer;
+}
 
 
 

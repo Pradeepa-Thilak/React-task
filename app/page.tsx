@@ -3,12 +3,15 @@ import { useState } from "react";
 import Modal from "@/app/components/Modal";
 import filterIcon from "@/app/assets/filter.jpg";
 import Image from "next/image";
+import downarrow from "@/app/assets/downward-arrow.png";
+import uparrow from "@/app/assets/arrow-up.png";
 
 type ModalType="file" | "search" | null;
 
 export default function HomePage() {
 
   const [open, setOpen] = useState(false);
+const [statusOpen, setStatusOpen] = useState(false);
 
   const[modalType,setModalType]=useState<ModalType>(null);
 
@@ -57,23 +60,40 @@ export default function HomePage() {
           <div className="bottom">
             <div className="leftp">
               <div className="lhead">
-                <select className="dropdown">
-                  <option value="Status"></option>
-                  <option value="PENDING"></option>
-                  <option value="APPROVED"></option>
-                  <option value="REJECTED"></option>
-                  <option value="EDITED &PENDING"></option>
-                </select>
-                
-                <div>
+                 <div className="status" onClick={()=>setStatusOpen(!statusOpen)}>
+                  Status
+                  <Image src={statusOpen? downarrow: uparrow} alt="downarrow"
+                  width={12}
+                  height={12}></Image>
+                 </div>
+                <div className="lprightbox">
                   <button className="clearall">Clear All</button>
-                  <button className="selectall" >
+                  <button className="selectall" >Select All
 
                   </button>
                 </div>
               </div>
               <div className="lbody">
-
+                {statusOpen && (
+                  <div className="dropdown-list">
+                    <label><input type="checkbox" /> PENDING</label>
+                    <label><input type="checkbox" /> APPROVED</label>
+                    <label><input type="checkbox" /> REJECTED</label>
+                    <label><input type="checkbox" /> EDITED & PENDING</label>
+                  </div>
+                )}
+                  <div className="filter-section">
+                    Filter title 
+                  <Image src={statusOpen? downarrow: uparrow} alt="downarrow"
+                  width={12}
+                  height={12}></Image>
+                </div>
+                  <div className="filter-section">
+                    Filter title
+                  <Image src={statusOpen? downarrow: uparrow} alt="downarrow"
+                  width={12}
+                  height={12}></Image>
+                </div>
               </div>
 
             </div>
