@@ -57,7 +57,20 @@ export default function HomePage() {
           <div className="bottom">
             <div className="leftp">
               <div className="lhead">
+                <select className="dropdown">
+                  <option value="Status"></option>
+                  <option value="PENDING"></option>
+                  <option value="APPROVED"></option>
+                  <option value="REJECTED"></option>
+                  <option value="EDITED &PENDING"></option>
+                </select>
                 
+                <div>
+                  <button className="clearall">Clear All</button>
+                  <button className="selectall" >
+
+                  </button>
+                </div>
               </div>
               <div className="lbody">
 
