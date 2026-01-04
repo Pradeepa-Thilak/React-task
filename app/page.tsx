@@ -5,6 +5,7 @@ import filterIcon from "@/app/assets/filter.jpg";
 import Image from "next/image";
 import downarrow from "@/app/assets/downward-arrow.png";
 import uparrow from "@/app/assets/arrow-up.png";
+import UploadFileModal from "@/app/components/UploadFileModal";
 
 type ModalType="file" | "search" | null;
 
@@ -30,11 +31,17 @@ const [statusOpen, setStatusOpen] = useState(false);
       <button className="search" onClick={()=>openModal("search")}>
         Search
       </button>
-      <Modal isopen={open} onClose={()=>setOpen(false)}>
+
+      <Modal 
+      isopen={open} 
+      onClose={()=>setOpen(false)}
+      variant={modalType==="file" ? "upload" : "default"}>
+
+
         {/* child1 */}
         {modalType==="file" &&(
         <>
-         
+           <UploadFileModal onClose={()=>setOpen(false)} />
         </>
 
         )}
