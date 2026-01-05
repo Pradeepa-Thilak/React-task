@@ -10,29 +10,33 @@ export default function UploadFileModal({ onClose }: UploadFileModalProps) {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string>("");
 
-  /* Validate XLS / XLSX */
-  const validateFile = (file: File) => {
-    const validTypes = [
-      "application/vnd.ms-excel",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    ];
+ 
 
-    if (!validTypes.includes(file.type)) {
-      setError("File not compatible for upload. Try again");
-      return false;
-    }
+// const validateFile = (file: File) => {
+//   const ext = file.name.split(".").pop()?.toLowerCase();
 
-    setError("");
-    return true;
-  };
+//   if (ext !== "xls" && ext !== "xlsx") {
+//     setError("File not compatible for upload. Try again");
+//     return false;
+//   }
 
-  const handleFile = (file: File) => {
-    if (validateFile(file)) {
-      setFile(file);
-    }
-  };
+//   setError("");
+//   return true;
+// };
 
-  /* Drag handlers (TypeScript-safe) */
+ const handleFile = (selectedFile: File) => {
+  setFile(selectedFile);      // ✅ ALWAYS set file
+
+  const ext = selectedFile.name.split(".").pop()?.toLowerCase();
+
+  if (ext !== "xls" && ext !== "xlsx") {
+    setError("File not compatible for upload. Try again");
+  } else {
+    setError("");             // ✅ valid file → clear error
+  }
+};
+
+
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
@@ -44,30 +48,32 @@ export default function UploadFileModal({ onClose }: UploadFileModalProps) {
   };
 
   return (
-    <div className="upload-modal">
-      {/* Header */}
+    <>
       <div className="upload-header">
         <h3>UPLOAD FILE</h3>
         <button className="close-btn" onClick={onClose}>
           ✕
         </button>
       </div>
-
-      {/* Info */}
+    <div className="upload-modal">
+     
+      
       <p className="upload-info">
         Upload excel file to modify the buylist
       </p>
 
-      {/* Drop Zone */}
+      
       <div
         className="drop-zone"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        <div className="cloud">☁️</div>
+        <div className="cloud">
+          <i className="fa-solid fa-cloud-arrow-down"></i>
+        </div>
 
         <p>
-          <strong>Choose a file</strong> or drag and drop it here
+          <strong>Choose a file or drag and drop it here</strong> 
         </p>
 
         <span>XLS or XLSX format</span>
@@ -92,21 +98,28 @@ export default function UploadFileModal({ onClose }: UploadFileModalProps) {
         />
       </div>
 
-      {/* Selected File */}
+     
+      <div className="display">
       {file && (
-        <div className="file-chip">
-          <span>{file.name}</span>
-          <button onClick={() => setFile(null)}>✕</button>
+        <div className="selected-file">
+          {file.name}
         </div>
       )}
 
-      {/* Error */}
-      {error && <p className="error-text">{error}</p>}
+      {error && (
+        <div className="error-text">
+          {error}
+        </div>
+      )}
+    </div>
 
-      {/* Footer */}
+     
+ 
+    
       <button className="upload-btn" disabled={!file}>
         Upload
       </button>
     </div>
+    </>
   );
 }

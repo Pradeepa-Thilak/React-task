@@ -41,7 +41,7 @@ const [statusOpen, setStatusOpen] = useState(false);
         {/* child1 */}
         {modalType==="file" &&(
         <>
-           <UploadFileModal onClose={()=>setOpen(false)} />
+           <UploadFileModal onClose={() => setOpen(false)} />
         </>
 
         )}
