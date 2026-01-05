@@ -7,7 +7,22 @@ import downarrow from "@/app/assets/downward-arrow.png";
 import uparrow from "@/app/assets/arrow-up.png";
 import UploadFileModal from "@/app/components/UploadFileModal";
 
-type ModalType="file" | "search" | null;
+type ModalType = "file" | "search" | null;
+
+const buylist = [
+  { id: 1, name: "Priya Patel" },
+  { id: 2, name: "Rohan Singh" },
+  { id: 3, name: "Vihaan Reddy" },
+  { id: 4, name: "Saanvi Nair" },
+  { id: 5, name: "Arjun Desai" },
+  { id: 6, name: "Diya Joshi" },
+  { id: 7, name: "Yash Kumar" },
+  { id: 8, name: "Neha Iyer" },
+  { id: 9, name: "Karan Mehta" },
+  { id: 10, name: "Riya Das" },
+  { id: 11, name: "Siddharth Rao" },
+  
+]
 
 export default function HomePage() {
 
@@ -15,7 +30,11 @@ export default function HomePage() {
 const [statusOpen, setStatusOpen] = useState(false);
 
   const[modalType,setModalType]=useState<ModalType>(null);
+  const [search, setSearch] = useState("");
 
+  const filteredBuylist = buylist.filter((user) => (
+    user.name.toLowerCase().includes(search.toLowerCase())
+    ))
   const openModal=(type:ModalType)=>{
     setModalType(type);
     setOpen(true);
@@ -107,24 +126,31 @@ const [statusOpen, setStatusOpen] = useState(false);
               <div className="rightp">
                 <div className="rightp-head">Submitted by</div>
                 <div className="searchinput">
-                  <input type="text" placeholder="Enter Customer ID / SO ID" className="input" />
+                  <input type="text" placeholder="Enter Customer ID / SO ID" className="input"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
                   <i className="fa-solid fa-magnifying-glass icon"></i>
                 </div>
-                <div className="lists">
-                  <div className="name">Priya Patel (DS)</div>
-                  <div className="name-detail">
-                    <div>
-                      <span>3 Buylists</span>
-                    </div>
-                    <div className="rating">
-                      <span>2</span>
-                      <span className="circle yellow"></span>
-                      <span>1</span>
-                      <span className="circle green"></span>
-                      <span>0</span>
-                      <span className="circle red"></span>
-                    </div>
+                <div className="user">
+                {filteredBuylist.map((user) => (
+                   <div className="lists" key={user.id}>
+                    <div className="name">{user.name} (DS)</div>
+                    <div className="name-detail">
+                      <div>
+                        <span>3 Buylists</span>
+                      </div>
+                      <div className="rating">
+                        <span>2</span>
+                        <span className="circle yellow"></span>
+                        <span>1</span>
+                        <span className="circle green"></span>
+                        <span>0</span>
+                        <span className="circle red"></span>
+                      </div>
+                      </div>
                   </div>
+                  ))}
                 </div>
               </div>
           </div>
